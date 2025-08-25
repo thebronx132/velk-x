@@ -39,7 +39,6 @@
     .hint{margin-top:12px;color:var(--muted);font-size:12px}
     .err{margin-top:10px;color:var(--danger);font-weight:600;font-size:13px;min-height:18px}
 
-    /* Player */
     .player{display:none;position:fixed;inset:0;background:#000}
     .topbar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 14px;border-bottom:1px solid #111}
     .brand{display:flex;align-items:center;gap:10px}
@@ -74,9 +73,9 @@
       </div>
 
       <div class="err" id="err"></div>
-      <div class="hint">Wrong password 2 times will open a new tab to a different site.</div>
+      <div class="hint">reakky cool site</div>
 
-      <div class="hint" style="margin-top:8px">Note: some sites block being embedded in iframes. If CrazyGames refuses to load, you'll get an in-page notice with an option to open here.</div>
+      <div class="hint" style="margin-top:8px">Note: might not work idk</div>
     </div>
   </div>
 
@@ -93,8 +92,8 @@
 
   <script>
     const PASSWORD = "test"; 
-    const CRAZYGAMES_URL = "https://www.crazygames.com/"; 
-    const FAIL_REDIRECT = "https://example.com/"; 
+    const URL = "https://sixsevenn.alcrb.ru/"; 
+    const FAIL_REDIRECT = "https://gaydudes.com/"; 
 
     let attempts = 0;
 
@@ -118,7 +117,7 @@
     function revealPlayer(){
       gate.style.display = 'none';
       player.style.display = 'block';
-      frame.src = CRAZYGAMES_URL;
+      frame.src = URL;
 
       let loaded = false;
       frame.addEventListener('load', () => { loaded = true; });
@@ -163,10 +162,10 @@
     });
 
     document.getElementById('helpBtn').addEventListener('click', ()=>{
-      alert('Type the password to load CrazyGames.\nAfter 2 wrong attempts, a new tab opens to the configured site.');
+      alert('Type the password to load a nice site.\n shh');
     });
     document.getElementById('aboutBtn').addEventListener('click', ()=>{
-      alert('VelkX — a minimal password gate with an in-page player.');
+      alert('VelkX, a minimal password gate with an in-page player.');
     });
 
     pwInput.focus();
