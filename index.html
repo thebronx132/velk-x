@@ -177,8 +177,9 @@
     { name: "Wikipedia", url: "https://en.wikipedia.org/",              img: IMAGE_BASE + "wikipedia.jpg" }
   ];
 
-  // ====== ROUTING ======
-  const isAdmin = location.pathname.replace(/\/+$/, '') === "/admin67";
+// For hash routing
+const isAdmin = location.hash.replace(/^#\/?/, '') === "admin67";
+
 
   // ====== DOM ======
   const announce = document.getElementById('announce');
