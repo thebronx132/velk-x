@@ -12,29 +12,39 @@
     --brand:#22c55e; --brand2:#16a34a; --brand3:#86efac; --ring:0 0 0 4px rgba(34,197,94,.28);
     --danger:#ef4444; --shadow1:0 10px 30px rgba(0,0,0,.35); --shadow2:0 18px 60px rgba(0,0,0,.45);
   }
-  *{box-sizing:border-box}
-  html,body{height:100%}
+  *{box-sizing:border-box} html,body{height:100%}
   body{
-    margin:0; color:var(--text); font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-    background: radial-gradient(1300px 700px at -10% -10%, #101a15 0%, var(--bg) 60%),
-               radial-gradient(900px 500px at 120% 0%, #0e1713 0%, var(--bg) 60%);
+    margin:0;color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:
+      radial-gradient(1300px 700px at -10% -10%, #101a15 0%, var(--bg) 60%),
+      radial-gradient(900px 500px at 120% 0%, #0e1713 0%, var(--bg) 60%);
   }
 
+  /* Topbar */
   .topbar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid #0e1512;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015));backdrop-filter:blur(8px)}
   .brand{display:flex;align-items:center;gap:10px}
   .logo{height:26px;width:26px;border-radius:8px;background:linear-gradient(135deg,var(--brand3),var(--brand2));overflow:hidden}
   .logo img{width:100%;height:100%;object-fit:cover;display:block}
   .title{font-weight:800;letter-spacing:.4px}
-  .controls{display:flex;gap:8px}
+  .controls{display:flex;gap:8px;align-items:center}
+
+  .pill{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--border);background:var(--panel2);font-weight:700}
+  .dot{width:8px;height:8px;border-radius:999px;background:var(--brand3);box-shadow:0 0 10px rgba(134,239,172,.6)}
+  .pill small{color:var(--muted);font-weight:600}
+
+  /* Buttons / Inputs */
   .btn,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;padding:0 14px;border-radius:12px;border:1px solid transparent;cursor:pointer;font-weight:700;transition:transform .06s,filter .18s,border-color .18s,background .18s}
   .btn{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0a0f0c;box-shadow:0 1px 0 rgba(0,0,0,.12)}
   .btn:hover{filter:brightness(1.05)} .btn:active{transform:translateY(1px)}
   .btn-ghost{background:var(--panel);color:var(--text);border-color:var(--border)} .btn-ghost:hover{background:var(--panel2)}
   .btn.small{height:34px;padding:0 10px;border-radius:10px;font-weight:600}
+
   .input{width:100%;height:48px;border-radius:14px;border:1px solid var(--border);background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));color:var(--text);padding:0 46px 0 14px;transition:border-color .18s,box-shadow .18s,background .18s}
   .input::placeholder{color:var(--muted)} .input:focus{outline:none;border-color:var(--brand);box-shadow:var(--ring);background:var(--panel2)}
   .input-wrap{position:relative}
   .eye{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;border:1px solid var(--border);background:var(--panel);cursor:pointer}
+
+  /* Gate */
   .wrap{min-height:calc(100% - 56px);display:flex;align-items:center;justify-content:center;padding:32px}
   .card{width:100%;max-width:520px;background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));border:1px solid var(--border);border-radius:24px;padding:28px;position:relative;overflow:hidden;box-shadow:var(--shadow2);backdrop-filter:blur(8px);animation:cardIn .5s ease both}
   @keyframes cardIn{from{transform:translateY(8px);opacity:0}to{transform:none;opacity:1}}
@@ -42,32 +52,35 @@
   .subtitle{margin:0;color:var(--muted);font-size:14px}
   .err{color:var(--danger);font-weight:700;font-size:13px;min-height:18px}
 
-  /* Picker (refined) */
+  /* Picker */
   .player{display:none}
   .grid{--cols:1;display:grid;gap:18px;padding:18px;grid-template-columns:repeat(var(--cols),minmax(0,1fr))}
   @media(min-width:680px){.grid{--cols:2}} @media(min-width:1024px){.grid{--cols:3}}
   .site{position:relative;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:var(--panel);transition:transform .18s,box-shadow .18s,border-color .18s;box-shadow:var(--shadow1)}
   .site:hover{transform:translateY(-3px);border-color:#214e39;box-shadow:0 18px 44px rgba(0,0,0,.42)}
   .thumb{aspect-ratio:16/9;background:#0a0f0c;overflow:hidden;position:relative}
-  .thumb img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(.985); /* a bit smaller */ transition:transform .35s ease}
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(.985);transition:transform .35s ease}
   .site:hover .thumb img{transform:scale(1.02)}
   .gloss{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,.55) 100%)}
   .meta{position:absolute;left:12px;right:12px;bottom:12px;display:flex;align-items:center;justify-content:space-between;gap:10px}
   .name{font-weight:800;letter-spacing:.2px;text-shadow:0 2px 10px rgba(0,0,0,.6)}
   .open{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#0b0f0c;font-weight:800;padding:8px 12px;border-radius:10px;border:1px solid #133321}
-  /* Removed the footer badges to keep it cleaner */
 </style>
 </head>
 <body>
 
-<div class="topbar" id="topbar">
+<!-- Topbar -->
+<div class="topbar">
   <div class="brand">
     <div class="logo" id="logoBox"></div>
     <div class="title">Velk-X</div>
   </div>
   <div class="controls">
-    <a class="btn-ghost small" href="#/">Home</a>
-    <a class="btn-ghost small" id="adminLink" style="display:none" href="#/admin67">Admin</a>
+    <span class="pill" id="reqPill" title="Total Requests (pageviews)">
+      <span class="dot"></span>
+      <span id="reqCount">—</span>
+      <small>requests</small>
+    </span>
     <button class="btn small" id="openDirect" style="display:none">Open here</button>
     <button class="btn-ghost small" id="toPicker" style="display:none">Site Picker</button>
   </div>
@@ -93,45 +106,14 @@
   <iframe id="frame" referrerpolicy="no-referrer" style="display:none;width:100%;height:calc(100vh - 56px);border:0;background:#000"></iframe>
 </div>
 
-<!-- Admin -->
-<div class="admin" id="admin" style="display:none">
-  <div class="admin-wrap">
-    <div class="kpis">
-      <div class="panel"><div class="subtitle">Currently Online</div><div class="kpi" id="kOnline">–</div></div>
-      <div class="panel"><div class="subtitle">Total Visits</div><div class="kpi" id="kVisits">–</div></div>
-      <div class="panel"><div class="subtitle">Total Pageviews</div><div class="kpi" id="kPV">–</div></div>
-      <div class="panel"><div class="subtitle">Total Time</div><div class="kpi" id="kTime">–</div></div>
-      <div class="panel"><div class="subtitle">Avg Session Time</div><div class="kpi" id="kAvg">–</div></div>
-      <div class="panel"><div class="subtitle">Sessions</div><div class="kpi" id="kSessions">–</div></div>
-    </div>
-    <div class="panel">
-      <div style="display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:8px">
-        <strong>Last 7 days</strong>
-        <div style="display:flex;gap:8px">
-          <button class="btn-ghost small" data-days="7">7d</button>
-          <button class="btn-ghost small" data-days="14">14d</button>
-          <button class="btn-ghost small" data-days="30">30d</button>
-          <button class="btn small" id="refreshStats">Refresh</button>
-        </div>
-      </div>
-      <div class="subtitle">Visits</div>
-      <div id="barsVisits" class="bars" style="margin-bottom:10px"></div>
-      <div class="subtitle">Pageviews</div>
-      <div id="barsPV" class="bars" style="margin-bottom:10px"></div>
-      <div class="subtitle">Time (minutes)</div>
-      <div id="barsTime" class="bars"></div>
-    </div>
-  </div>
-</div>
-
 <script>
   // === CONFIG ===
   const PASSWORD     = "test";
   const FAIL_REDIRECT= "https://example.com/";
   const IMAGE_BASE   = "https://raw.githubusercontent.com/thebronx132/velk-x/main/images/";
-  const API_BASE     = "https://velk-x-api.onrender.com"; // your Render API
-  const ADMIN_KEY    = "300267"; // must match ADMIN_TOKEN in server.js
+  const API_BASE     = "https://velk-x-api.onrender.com"; // your Render API (Firestore-backed)
 
+  // Catalog
   const SITES = [
     { name:"selenite",  url:"https://sixsevenn.alcrb.ru/",      img: IMAGE_BASE+"selenite.png" },
     { name:"MDN",       url:"https://developer.mozilla.org/",   img: IMAGE_BASE+"mdn.jpg" },
@@ -141,47 +123,22 @@
   // === DOM refs ===
   const gate   = document.getElementById('gate');
   const player = document.getElementById('player');
-  const admin  = document.getElementById('admin');
   const picker = document.getElementById('picker');
   const frame  = document.getElementById('frame');
   const toPickerBtn = document.getElementById('toPicker');
   const openDirect  = document.getElementById('openDirect');
   const logoBox = document.getElementById('logoBox');
-  const adminLink = document.getElementById('adminLink');
+  const reqCountEl = document.getElementById('reqCount');
 
   // === helpers ===
-  function route(){ return location.hash.replace(/^#\/?/, '') || ''; }
-  function show(view){
-    gate.style.display   = (view==='gate')   ? 'flex'  : 'none';
-    player.style.display = (view==='player') ? 'block' : 'none';
-    admin.style.display  = (view==='admin')  ? 'block' : 'none';
-  }
   function setLogo(){
     logoBox.innerHTML=''; const img=document.createElement('img');
     img.src=IMAGE_BASE+'velk-x.png'; img.alt='Velk-X'; img.loading='lazy'; logoBox.appendChild(img);
   }
-
-  // === Admin gating ===
-  const ADMIN_FLAG_KEY = "velkx:isAdminUnlocked";
-  function isAdminUnlocked(){ return localStorage.getItem(ADMIN_FLAG_KEY) === "1"; }
-  function promptAdmin(){
-    const v = prompt("Admin key:");
-    if (v && v.trim() === ADMIN_KEY){
-      localStorage.setItem(ADMIN_FLAG_KEY, "1");
-      adminLink.style.display = "inline-flex";
-      location.hash = "#/admin67";
-    } else {
-      alert("Invalid key."); location.hash = "#/";
-    }
+  function show(view){
+    gate.style.display   = (view==='gate')   ? 'flex'  : 'none';
+    player.style.display = (view==='player') ? 'block' : 'none';
   }
-  // Only show Admin link if unlocked
-  if (isAdminUnlocked()) adminLink.style.display = "inline-flex";
-  adminLink.addEventListener('click', (e)=>{
-    if (!isAdminUnlocked()){
-      e.preventDefault();
-      promptAdmin();
-    }
-  });
 
   // === Gate ===
   const pwInput=document.getElementById('pw');
@@ -194,7 +151,7 @@
   function clearErr(){ errEl.textContent=''; }
   function tryEnter(){
     clearErr();
-    if ((pwInput.value||'').trim() === PASSWORD){ location.hash="#/"; startPlayer(); return; }
+    if ((pwInput.value||'').trim() === PASSWORD){ startPlayer(); return; }
     attempts++; if (attempts>=2){ err('Too many attempts. Redirecting…'); const w=window.open(FAIL_REDIRECT,'_blank','noopener,noreferrer'); if(!w) alert('Popup blocked.'); }
     else err('Incorrect password. Try again.');
   }
@@ -239,55 +196,35 @@
 
   function startPlayer(){
     setLogo(); show('player'); renderPicker();
+    // analytics pings
     ping('/visit',{sid}); ping('/pageview',{sid, path:'home'});
     heartbeat=setInterval(()=> ping('/beat',{sid}), 15000);
     window.addEventListener('beforeunload', ()=> navigator.sendBeacon?.(`${API_BASE}/leave`, JSON.stringify({sid})));
+    // stats fetch loop
+    updateRequests(); setInterval(updateRequests, 30000);
   }
 
-  // === Admin (stats) ===
-  let currentDays=7;
-  async function loadStats(days=7){
+  // === “Total Requests” (pageviews) ===
+  async function updateRequests(){
     if (!API_BASE) return;
     try{
-      const r=await fetch(`${API_BASE}/stats?days=${days}`); const j=await r.json();
-      set('#kOnline', j.online); set('#kVisits', j.visits); set('#kPV', j.pageviews);
-      set('#kTime', fmtDur(j.timeTotal)); set('#kAvg', fmtDur(j.avgSessionSec)); set('#kSessions', j.sessions ?? '–');
-      drawBars('barsVisits', j.daily.dates, j.daily.visits);
-      drawBars('barsPV', j.daily.dates, j.daily.pageviews);
-      drawBars('barsTime', j.daily.dates, j.daily.timeSec.map(s=>Math.round(s/60)));
-    }catch{}
-  }
-  function set(sel,val){ const n=document.querySelector(sel); if(n) n.textContent=(typeof val==='number')?val.toLocaleString():val; }
-  function fmtDur(sec){ const s=Math.round(sec); const m=Math.floor(s/60), r=s%60; const h=Math.floor(m/60), mm=m%60; return h>0?`${h}h ${mm}m`:`${m}m ${r}s`; }
-  function drawBars(id, labels, values){
-    const wrap=document.getElementById(id); if(!wrap) return; wrap.innerHTML='';
-    const max=Math.max(1,...values);
-    values.forEach((v,i)=>{ const h=Math.max(6,Math.round((v/max)*100)); const b=document.createElement('div'); b.className='bar'; b.style.height=`${h}%`; b.setAttribute('data-v',v); b.title=`${labels[i]} — ${v}`; wrap.appendChild(b); });
-  }
-  document.getElementById('refreshStats').addEventListener('click', ()=> loadStats(currentDays));
-  document.querySelectorAll('[data-days]').forEach(b=> b.addEventListener('click', ()=>{ currentDays=Number(b.dataset.days||7); loadStats(currentDays); }));
-
-  // === Router ===
-  function navigate(){
-    const r = route();
-    if (r === 'admin67'){
-      if (!isAdminUnlocked()){ promptAdmin(); return; }
-      clearInterval(heartbeat); heartbeat=null; show('admin'); setLogo(); loadStats(7);
-    } else {
-      show('gate'); pwInput.focus();
+      const r = await fetch(`${API_BASE}/stats?days=7`, { cache: 'no-store' });
+      const j = await r.json();
+      const n = Number(j.pageviews || 0);
+      reqCountEl.textContent = isNaN(n) ? '—' : n.toLocaleString();
+    }catch{
+      reqCountEl.textContent = '—';
     }
   }
-  window.addEventListener('hashchange', navigate);
 
-  // === Optional analytics ===
+  // === Optional analytics helper ===
   async function ping(path, body){
     if(!API_BASE) return;
     try { await fetch(`${API_BASE}${path}`, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) }); } catch {}
   }
 
   // boot
-  if (isAdminUnlocked()) adminLink.style.display="inline-flex";
-  navigate();
+  show('gate'); // start on gate
 </script>
 </body>
 </html>
